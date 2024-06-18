@@ -1,0 +1,94 @@
+--- old/DSDT.dsl	2024-06-18 13:51:25.559800943 -0700
++++ new/DSDT.dsl	2024-06-11 16:24:54.574859632 -0700
+@@ -18,7 +18,7 @@
+  *     Compiler ID      "INTL"
+  *     Compiler Version 0x20160527 (538314023)
+  */
+-DefinitionBlock ("", "DSDT", 2, "DELL  ", "CBX3   ", 0x01072009)
++DefinitionBlock ("", "DSDT", 2, "DELL  ", "CBX3   ", 0x0107200a)
+ {
+     External (_GPE.AL6F, MethodObj)    // 0 Arguments
+     External (_GPE.HLVT, MethodObj)    // 0 Arguments
+@@ -59525,7 +59525,7 @@
+     Method (EV5, 2, NotSerialized)
+     {
+         \_SB.PCI0.GFX0.BRT6 (Arg0, Arg1)
+-        \_SB.PCI0.PEG0.PEGP.BRT6 (Arg0, Arg1)
++        //\_SB.PCI0.PEG0.PEGP.BRT6 (Arg0, Arg1)
+     }
+ 
+     Method (EV8, 2, NotSerialized)
+--- old/SSDT3.dsl	2024-06-18 13:51:25.603134517 -0700
++++ new/SSDT3.dsl	2024-06-11 16:30:29.312750927 -0700
+@@ -5,7 +5,7 @@
+  * 
+  * Disassembling to symbolic ASL+ operators
+  *
+- * Disassembly of /sys/firmware/acpi/tables/SSDT3
++ * Disassembly of SSDT3
+  *
+  * Original Table Header:
+  *     Signature        "SSDT"
+@@ -18,7 +18,7 @@
+  *     Compiler ID      "INTL"
+  *     Compiler Version 0x20160527 (538314023)
+  */
+-DefinitionBlock ("", "SSDT", 2, "PegSsd", "PegSsdt", 0x00001000)
++DefinitionBlock ("", "SSDT", 2, "PegSsd", "PegSsdt", 0x00001001)
+ {
+     External (_SB_.CAGS, MethodObj)    // 1 Arguments
+     External (_SB_.GGOV, MethodObj)    // 1 Arguments
+@@ -2100,7 +2100,7 @@
+                     SGPO (SGGP, HRE0, HRG0, HRA0, One)
+                     While (One)
+                     {
+-                        Stall (0xFA)
++                        Sleep (250)
+                         CTER += One
+                         If ((CTER == 0x08))
+                         {
+@@ -2117,7 +2117,7 @@
+                     SGPO (P1GP, HRE1, HRG1, HRA1, One)
+                     While (One)
+                     {
+-                        Stall (0xFA)
++                        Sleep (250)
+                         CTER += One
+                         If ((CTER == 0x08))
+                         {
+@@ -2134,7 +2134,7 @@
+                     SGPO (P2GP, HRE2, HRG2, HRA2, One)
+                     While (One)
+                     {
+-                        Stall (0xFA)
++                        Sleep (250)
+                         CTER += One
+                         If ((CTER == 0x08))
+                         {
+@@ -2153,7 +2153,7 @@
+                     SGPO (SGGP, PWE0, PWG0, PWA0, One)
+                     While (One)
+                     {
+-                        Stall (0xFA)
++                        Sleep (250)
+                         CTER += One
+                         If ((CTER == 0x0F))
+                         {
+@@ -2171,7 +2171,7 @@
+                     SGPO (P1GP, PWE1, PWG1, PWA1, One)
+                     While (One)
+                     {
+-                        Stall (0xFA)
++                        Sleep (250)
+                         CTER += One
+                         If ((CTER == 0x0F))
+                         {
+@@ -2189,7 +2189,7 @@
+                     SGPO (P2GP, PWE2, PWG2, PWA2, One)
+                     While (One)
+                     {
+-                        Stall (0xFA)
++                        Sleep (250)
+                         CTER += One
+                         If ((CTER == 0x0F))
+                         {
